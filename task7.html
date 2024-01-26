@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Игра с арифметическими операциями</title>
+</head>
+<body>
+
+<h2>Игра с арифметическими операциями</h2>
+
+<p>Введите количество жизней:</p>
+<input type="number" id="livesInput"> 
+<button onclick="startGame()">Начать игру</button>
+<p id="question"></p>
+<input type="number" id="answer">
+<button onclick="checkAnswer()">Ответить</button>
+<p id="result"></p>
+<button onclick="reloadPage()">Начать сначала</button>
+
+<script>
+  let lives;
+  let num1, num2, operation, correctAnswer;
+
+  function startGame() {
+    lives = parseInt(document.getElementById('livesInput').value);
+    askQuestion();
+  }
+
+  function askQuestion() {
+    num1 = Math.floor(Math.random() * 10);
+    num2 = Math.floor(Math.random() * 10);
+    const operations = ['+', '-', '*', '/'];
+    operation = operations[Math.floor(Math.random() * operations.length)];
+
+    switch (operation) {
+      case '+':
+        correctAnswer = num1 + num2;
+        break;
+      case '-':
+        correctAnswer = num1 - num2;
+        break;
+      case '*':
+        correctAnswer = num1 * num2;
+        break;
+      case '/':
+        correctAnswer = num1 / num2;
+        break;
+    }
+
+    const questionElement = document.getElementById('question');
+    questionElement.textContent = `Сколько будет ${num1} ${operation} ${num2}?`;
+  }
+
+  function checkAnswer() {
+    const userAnswer = parseInt(document.getElementById('answer').value);
+    const resultElement = document.getElementById('result');
+
+    if (userAnswer === correctAnswer) {
+      resultElement.textContent = 'Правильно! Следующий вопрос.';
+      askQuestion();
+    } else {
+      lives--;
+      if (lives > 0) {
+        resultElement.textContent = `Неправильно! Осталось жизней: ${lives}. Попробуйте еще раз.`;
+      } else {
+        resultElement.textContent = 'Игра окончена. Вы проиграли.';
+      }
+    }
+  }
+
+  function reloadPage() {
+  location.reload(); // Этот метод перезагружает текущую страницу
+}
+</script>
+
+</body>
+</html>

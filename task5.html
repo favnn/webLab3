@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Подсчет количества цифр 2</title>
+  </head>
+<body>
+
+<h2>Подсчет количества цифр 2</h2>
+
+<p>Введите число:</p>
+<input type="number" id="userNumber">
+<button onclick="countTwos()">Подсчитать</button>
+<p id="result"></p>
+
+<script>
+  function countTwos() 
+  {
+    const number = parseInt(document.getElementById('userNumber').value);
+    let count = 0;
+    
+    for (let i = 0; i <= number; i++) 
+    {
+      const digits = i.toString(); 
+      for (let j = 0; j < digits.length; j++) 
+      {
+        if (digits.charAt(j) === '2') 
+        {
+          count++;
+        }
+      }
+    }
+    
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `Количество цифр 2 в числах от 0 до ${number}: ${count}`;
+  }
+</script>
+
+</body>
+</html>

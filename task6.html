@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Определение перестановки строк</title>
+</head>
+<body>
+
+<h2>Определение перестановки строк</h2>
+
+<p>Введите первую строку:</p>
+<input type="text" id="input1">
+<p>Введите вторую строку:</p>
+<input type="text" id="input2">
+<button onclick="checkPermutation()">Проверить</button>
+<p id="result"></p>
+
+<script>
+  function checkPermutation() {
+    const string1 = document.getElementById('input1').value;
+    const string2 = document.getElementById('input2').value;
+
+    if (string1.length !== string2.length) {
+      document.getElementById('result').textContent = 'Строки не являются перестановками друг друга';
+      return;
+    }
+
+    const charArray1 = string1.split('');
+    const charArray2 = string2.split('');
+
+    charArray1.sort();
+    charArray2.sort();
+
+    let permutation = true;
+    for (let i = 0; i < charArray1.length; i++) {
+      if (charArray1[i] !== charArray2[i]) {
+        permutation = false;
+        break;
+      }
+    }
+
+    const resultElement = document.getElementById('result');
+    if (permutation) {
+      resultElement.textContent = 'Строки являются перестановками друг друга';
+    } else {
+      resultElement.textContent = 'Строки не являются перестановками друг друга';
+    }
+  }
+</script>
+
+</body>
+</html>

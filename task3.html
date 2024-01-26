@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Проверка массива на четность</title>
+</head>
+<body>
+
+<h2>Проверка массива на четность</h2>
+
+<p>Введите массив чисел через запятую:</p>
+<input type="text" id="numbers">
+<button onclick="checkEven()">Проверить</button>
+<p id="result"></p>
+
+<script>
+  function checkEven() {
+    const numbersInput = document.getElementById('numbers').value;
+    const numbersArray = numbersInput.split(',').map(Number);
+    
+    let allEven = true;
+    // цикл для проверки четности каждого эл массива
+    for (let i = 0; i < numbersArray.length; i++) {
+      if (numbersArray[i] % 2 !== 0) {
+        allEven = false;
+        break;
+      }
+    }
+    
+    const resultElement = document.getElementById('result');
+    if (allEven) {
+      resultElement.textContent = 'Результат: true (все числа четные)';
+    } else {
+      resultElement.textContent = 'Результат: false (есть нечетные числа)';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Расчет расстояния доставки с грузовиками</title>
+</head>
+<body>
+
+<h2>Расчет расстояния доставки</h2>
+
+<p>Введите количество грузовиков:</p>
+<input type="number" id="truckCount">
+<button onclick="calculateDistance()">Рассчитать</button>
+<p id="result"></p>
+
+<script>
+  function calculateDistance() {
+    const truckCount = parseInt(document.getElementById('truckCount').value);
+    let totalDistance = 0;
+    
+    for (let i = 0; i < truckCount; i++) {
+      totalDistance += 100; 
+    }
+    
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `С использованием ${truckCount} грузовиков вы можете доставить груз на расстояние до ${totalDistance} км.`;
+  }
+</script>
+
+</body>
+</html>
